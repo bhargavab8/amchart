@@ -26,10 +26,11 @@
             });
             this._props = {};
             this.am4core = window.am4core
+            this.renderChart()
 
         }
 
-        renderChar(){
+        renderChart(){
 
             this.am4core.ready(function() {
 
