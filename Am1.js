@@ -38,5 +38,5 @@
             }
         }
     }
-    customElements.define("com.sap.sample.amchart1", ColoredBox);
+    customElements.define("com-sample-amchart1", ColoredBox);
 })();
