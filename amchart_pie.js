@@ -38,8 +38,8 @@
 					// Themes begin
 					am4core.useTheme(am4themes_animated);
 					// Themes end
-					
-					var chart = am4core.create("chartdiv", am4charts.PieChart);
+					const ctx = document.querySelector(".sapCustomWidgetWebComponent").shadowRoot.querySelector("#chart_div");
+					var chart = am4core.create(ctx, am4charts.PieChart);
 					chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 					
 					chart.data = [
