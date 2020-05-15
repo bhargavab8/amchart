@@ -91,8 +91,8 @@
 					});                                                           
 				}
 			script.src = 'https://www.amcharts.com/lib/4/core.js';
-			script.src = 'https://www.amcharts.com/lib/4/charts.js';
-			script.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
+			//script.src = 'https://www.amcharts.com/lib/4/charts.js';
+			//script.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
 			//Append it to the document header
 			document.head.appendChild(script);
             }
