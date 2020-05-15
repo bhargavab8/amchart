@@ -1,4 +1,7 @@
 (function() { 
+  importScripts('https://www.amcharts.com/lib/4/core.js');
+  importScripts('https://www.amcharts.com/lib/4/charts.js');
+  importScripts('https://www.amcharts.com/lib/4/themes/animated.js');
     let template = document.createElement("template");
     template.innerHTML = `
     <style>
@@ -8,12 +11,7 @@
     }
     
     </style>
-    
-    <!-- Resources -->
-    <script src="https://www.amcharts.com/lib/4/core.js"></script>
-    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-        <div id="chartdiv">chart comes here</div>
+     <div id="chartdiv">chart comes here</div>
     `;
     class ColoredBox extends HTMLElement {
         constructor() {
@@ -93,12 +91,7 @@
             this._props = { ...this._props, ...changedProperties };
         }
         onCustomWidgetAfterUpdate(changedProperties) {
-            if ("color" in changedProperties) {
-                this.style["background-color"] = changedProperties["color"];
-            }
-            if ("opacity" in changedProperties) {
-                this.style["opacity"] = changedProperties["opacity"];
-            }
+            this.renderChart()
         }
     }
     customElements.define("com-sample-amchart1", ColoredBox);
