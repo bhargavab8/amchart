@@ -91,10 +91,9 @@
 					
 					});                                                           
 				}
-			script.innerHTML=`
-			<script src="https://www.amcharts.com/lib/4/core.js"></script>
-			<script src="https://www.amcharts.com/lib/4/charts.js"></script>
-			<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>	`;
+			document.write('<script src="https://www.amcharts.com/lib/4/core.js"><\/script>');
+			document.write('<script src="https://www.amcharts.com/lib/4/charts.js"><\/script>');
+			document.write('<script src="https://www.amcharts.com/lib/4/themes/animated.js"><\/script>');
 			//script.src = 'https://www.amcharts.com/lib/4/core.js';
 			//script.src = 'https://www.amcharts.com/lib/4/charts.js';
 			//script.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
