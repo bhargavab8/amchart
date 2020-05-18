@@ -1,15 +1,12 @@
 (function() { 
 	let template = document.createElement("template");
 	  template.innerHTML = `
-
-<style>
-#chart_div {
-  width: 100%;
-  height: 500px;
-}
-
-</style>
-`;
+      <style>
+      :host {
+          display: block;
+         } 
+         </style> 
+        <div id="chart_div"></div>`;
 
     class amchart1 extends HTMLElement {
 		    constructor() {
@@ -31,8 +28,8 @@
         onCustomWidgetAfterUpdate(changedProperties) {
             this._props = { ...this._props, ...changedProperties };
             var myprops = this._props
-            //document.getElementById("chart_div").style.width=myprops.width;
-            //document.getElementById("chart_div").style.height=myprops.height;
+            this.style["width"]=myprops.width;
+            this.style["height"]=myprops.height;
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
@@ -115,14 +112,7 @@
                 }
                 script.src = 'https://www.amcharts.com/lib/4/core.js';
                 document.head.appendChild(script);
-				//document.write('<script src="https://www.amcharts.com/lib/4/core.js"><\/script>');
-				//document.write('<script src="https://www.amcharts.com/lib/4/charts.js"><\/script>');
-				//document.write('<script src="https://www.amcharts.com/lib/4/themes/animated.js"><\/script>');
-			//script.src = 'https://www.amcharts.com/lib/4/core.js';
-			//script.src = 'https://www.amcharts.com/lib/4/charts.js';
-			//script.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
-			//Append it to the document header
-			//document.head.appendChild(script);
+
 			
             }
     }
