@@ -1,12 +1,15 @@
 (function() { 
 	let template = document.createElement("template");
 	  template.innerHTML = `
-      <style>
-      :host {
-          display: block;
-      } 
-  </style> 
-<div id="chart_div"></div>`;
+
+<style>
+#chart_div {
+  width: 100%;
+  height: 500px;
+}
+
+</style>
+`;
 
     class amchart1 extends HTMLElement {
 		    constructor() {
