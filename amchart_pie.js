@@ -6,9 +6,6 @@
           display: block;
       } 
   </style> 
-  document.write('<script src="https://www.amcharts.com/lib/4/core.js"><\/script>');
-  document.write('<script src="https://www.amcharts.com/lib/4/charts.js"><\/script>');
-  document.write('<script src="https://www.amcharts.com/lib/4/themes/animated.js"><\/script>');
   
 <div id="chart_div"></div>`;
     
@@ -31,8 +28,33 @@
 
         onCustomWidgetAfterUpdate(changedProperties) {
             this._props = { ...this._props, ...changedProperties };
-            var myprops = this._props
+			var myprops = this._props
+						// Get the first script element on the page
+						var ref = w.document.getElementsByTagName( "template" )[ 0 ];
+
+						// Create a new script element
+						var script = w.document.createElement( 'script1' );
 			
+						// Set the script element `src`
+						script1.src = 'https://www.amcharts.com/lib/4/core.js.js';
+			
+						// Inject the script into the DOM
+						ref.parentNode.insertBefore( script1, ref );
+						// Create a new script element
+						var script = w.document.createElement( 'script2' );
+			
+						// Set the script element `src`
+						script2.src = 'https://www.amcharts.com/lib/4/charts.js';
+						
+						// Inject the script into the DOM
+						ref.parentNode.insertBefore( script2, ref );
+						var script = w.document.createElement( 'script3' );
+			
+						// Set the script element `src`
+						script3.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
+						
+						// Inject the script into the DOM
+						ref.parentNode.insertBefore( script3, ref );
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
@@ -94,7 +116,9 @@
 					
 					});                                                           
 				}
-			
+				//document.write('<script src="https://www.amcharts.com/lib/4/core.js"><\/script>');
+				//document.write('<script src="https://www.amcharts.com/lib/4/charts.js"><\/script>');
+				//document.write('<script src="https://www.amcharts.com/lib/4/themes/animated.js"><\/script>');
 			//script.src = 'https://www.amcharts.com/lib/4/core.js';
 			//script.src = 'https://www.amcharts.com/lib/4/charts.js';
 			//script.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
