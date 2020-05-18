@@ -8,7 +8,24 @@
   </style> 
   
 <div id="chart_div"></div>`;
-    
+const script1 ="https://www.amcharts.com/lib/4/core.js";
+const script2="https://www.amcharts.com/lib/4/charts.js";
+const script3="https://www.amcharts.com/lib/4/themes/animated.js";
+
+function loadScript(src) {
+	return new Promise(function(resolve, reject) {
+	  let script = document.createElement('script');
+	  script.src = src;
+
+	  script.onload = () => {console.log("Load: " + src); resolve(script);}
+	  script.onerror = () => reject(new Error(`Script load error for ${src}`));
+
+	  shadowRoot.appendChild(script)
+	});
+  }
+  loadScript(script1);
+  loadScript(script2);
+  loadScript(script3);
     class amchart1 extends HTMLElement {
 		    constructor() {
 			      super(); 
@@ -29,32 +46,6 @@
         onCustomWidgetAfterUpdate(changedProperties) {
             this._props = { ...this._props, ...changedProperties };
 			var myprops = this._props
-						// Get the first script element on the page
-						var ref = w.document.getElementsByTagName( "template" )[ 0 ];
-
-						// Create a new script element
-						var script = w.document.createElement( 'script1' );
-			
-						// Set the script element `src`
-						script1.src = 'https://www.amcharts.com/lib/4/core.js.js';
-			
-						// Inject the script into the DOM
-						ref.parentNode.insertBefore( script1, ref );
-						// Create a new script element
-						var script = w.document.createElement( 'script2' );
-			
-						// Set the script element `src`
-						script2.src = 'https://www.amcharts.com/lib/4/charts.js';
-						
-						// Inject the script into the DOM
-						ref.parentNode.insertBefore( script2, ref );
-						var script = w.document.createElement( 'script3' );
-			
-						// Set the script element `src`
-						script3.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
-						
-						// Inject the script into the DOM
-						ref.parentNode.insertBefore( script3, ref );
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
@@ -123,7 +114,7 @@
 			//script.src = 'https://www.amcharts.com/lib/4/charts.js';
 			//script.src = 'https://www.amcharts.com/lib/4/themes/animated.js';
 			//Append it to the document header
-			document.head.appendChild(script);
+			//document.head.appendChild(script);
             }
     }
     customElements.define("com-sample-amchart1", amchart1);
