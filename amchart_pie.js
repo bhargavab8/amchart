@@ -12,20 +12,13 @@ const script1 ="https://www.amcharts.com/lib/4/core.js";
 const script2="https://www.amcharts.com/lib/4/charts.js";
 const script3="https://www.amcharts.com/lib/4/themes/animated.js";
 
-function loadScript(src) {
-	return new Promise(function(resolve, reject) {
-	  let script = document.createElement('script');
-	  script.src = src;
-
-	  script.onload = () => {console.log("Load: " + src); resolve(script);}
-	  script.onerror = () => reject(new Error(`Script load error for ${src}`));
-
-	  document.head.appendChild(script)
-	});
-  }
-  loadScript(script1);
-  loadScript(script2);
-  loadScript(script3);
+  loadScript(script1, function(){
+    loadScript(script2, function(){
+        loadScript(script3, function(){
+            alert("All files are loaded!");
+        });
+    });
+});
     class amchart1 extends HTMLElement {
 		    constructor() {
 			      super(); 
