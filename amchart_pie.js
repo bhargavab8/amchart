@@ -31,8 +31,8 @@
         onCustomWidgetAfterUpdate(changedProperties) {
             this._props = { ...this._props, ...changedProperties };
             var myprops = this._props
-            document.getElementById("chart_div").style.width=myprops.width;
-            document.getElementById("chart_div").style.height=myprops.height;
+            //document.getElementById("chart_div").style.width=myprops.width;
+            //document.getElementById("chart_div").style.height=myprops.height;
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
