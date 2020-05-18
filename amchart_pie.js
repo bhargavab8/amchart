@@ -1,14 +1,15 @@
 (function() { 
-    let template = document.createElement("template");
+	let template = document.createElement("template");
 	  template.innerHTML = `
       <style>
       :host {
           display: block;
       } 
   </style> 
-  <script src="https://www.amcharts.com/lib/4/core.js"><\/script>
-  <script src="https://www.amcharts.com/lib/4/charts.js"><\/script>
-  <script src="https://www.amcharts.com/lib/4/themes/animated.js"><\/script>
+  document.write('<script src="https://www.amcharts.com/lib/4/core.js"><\/script>');
+  document.write('<script src="https://www.amcharts.com/lib/4/charts.js"><\/script>');
+  document.write('<script src="https://www.amcharts.com/lib/4/themes/animated.js"><\/script>');
+  
 <div id="chart_div"></div>`;
     
     class amchart1 extends HTMLElement {
