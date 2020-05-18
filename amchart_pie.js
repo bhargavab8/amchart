@@ -8,17 +8,6 @@
   </style> 
   
 <div id="chart_div"></div>`;
-const script1 ="https://www.amcharts.com/lib/4/core.js";
-const script2="https://www.amcharts.com/lib/4/charts.js";
-const script3="https://www.amcharts.com/lib/4/themes/animated.js";
-
-  loadScript(script1, function(){
-    loadScript(script2, function(){
-        loadScript(script3, function(){
-            alert("All files are loaded!");
-        });
-    });
-});
     class amchart1 extends HTMLElement {
 		    constructor() {
 			      super(); 
@@ -42,6 +31,9 @@ const script3="https://www.amcharts.com/lib/4/themes/animated.js";
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
+			const script1 ="https://www.amcharts.com/lib/4/core.js";
+			const script2="https://www.amcharts.com/lib/4/charts.js";
+			const script3="https://www.amcharts.com/lib/4/themes/animated.js";
 			script.onload = function () {                  
 				am4core.ready(function() {
 
@@ -100,6 +92,15 @@ const script3="https://www.amcharts.com/lib/4/themes/animated.js";
 					
 					});                                                           
 				}
+				function loadscript(src) {
+					script.src=src;
+					document.head.appendChild(script);
+				}
+				loadscript(script1);
+				loadscript(script2);
+				loadscript(script3);
+
+
 				//document.write('<script src="https://www.amcharts.com/lib/4/core.js"><\/script>');
 				//document.write('<script src="https://www.amcharts.com/lib/4/charts.js"><\/script>');
 				//document.write('<script src="https://www.amcharts.com/lib/4/themes/animated.js"><\/script>');
