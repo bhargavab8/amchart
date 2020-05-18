@@ -20,7 +20,7 @@ function loadScript(src) {
 	  script.onload = () => {console.log("Load: " + src); resolve(script);}
 	  script.onerror = () => reject(new Error(`Script load error for ${src}`));
 
-	  shadowRoot.appendChild(script)
+	  document.head.appendChild(script)
 	});
   }
   loadScript(script1);
