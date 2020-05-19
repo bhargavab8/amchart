@@ -23,6 +23,8 @@
         onCustomWidgetAfterUpdate(changedProperties) {
             this._props = { ...this._props, ...changedProperties };
             var myprops = this._props
+            var val = myprops.value;           
+
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
@@ -37,6 +39,22 @@
                     script2.async = true;
         
                     script2.onload = function () {  
+                      drawchart(val)}
+
+                      function drawchart(props) {
+                        var a=props.split(";");
+                        var chartdata=[];
+                        for (let i = 0; i < a.length; i++) {
+                          const a1 = a[i].substring(0,a[i].search(":"));
+                          const a2 = a[i].substring(a[i].search(":")+1,);
+                          const a3 = Number(a2);
+                          var c1={
+                            Label: a1,
+                            value: a3
+                          }
+                          chartdata.push(c1);
+                        }
+                      
                         am4core.ready(function() {
 
                             // Themes begin
@@ -46,32 +64,7 @@
                             var chart = am4core.create(ctx, am4charts.PieChart);
                             chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
                             
-                            chart.data = [
-                              {
-                                country: "Lithuania",
-                                value: 401
-                              },
-                              {
-                                country: "Czech Republic",
-                                value: 300
-                              },
-                              {
-                                country: "Ireland",
-                                value: 200
-                              },
-                              {
-                                country: "Germany",
-                                value: 165
-                              },
-                              {
-                                country: "Australia",
-                                value: 139
-                              },
-                              {
-                                country: "Austria",
-                                value: 128
-                              }
-                            ];
+                            chart.data = chartdata;
                             chart.radius = am4core.percent(70);
                             chart.innerRadius = am4core.percent(40);
                             chart.startAngle = 180;
@@ -79,7 +72,7 @@
                             
                             var series = chart.series.push(new am4charts.PieSeries());
                             series.dataFields.value = "value";
-                            series.dataFields.category = "country";
+                            series.dataFields.category = "Label";
                             
                             series.slices.template.cornerRadius = 10;
                             series.slices.template.innerCornerRadius = 7;
