@@ -23,9 +23,9 @@
         onCustomWidgetAfterUpdate(changedProperties) {
             this._props = { ...this._props, ...changedProperties };
             var myprops = this._props
-            var a=document.querySelector(".sapCustomWidgetWebComponent").shadowRoot.getElementById("#chart_div");
-            a.style.width=myprops.width;
-            a.style.height=myprops.height;
+            var a=document.getElementById("#chart_div");
+            a.style["width"]=myprops.width+"px";
+            a.style["height"]=myprops.height+"px";
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
