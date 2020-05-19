@@ -1,7 +1,7 @@
 (function() { 
 	let template = document.createElement("template");
 	  template.innerHTML = `
-        <div id="chart_div" style=""></div>`;
+        <div id="chart_div" style="width:900px;height:800px"></div>`;
 
     class amchart1 extends HTMLElement {
 		    constructor() {
@@ -23,9 +23,6 @@
         onCustomWidgetAfterUpdate(changedProperties) {
             this._props = { ...this._props, ...changedProperties };
             var myprops = this._props
-            var a=document.getElementById("#chart_div");
-            a.style["width"]=myprops.width+"px";
-            a.style["height"]=myprops.height+"px";
 			const script = document.createElement('script');
 			script.type = 'text/javascript';
 			script.async = true;
