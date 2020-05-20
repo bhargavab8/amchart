@@ -116,5 +116,5 @@
 
             }
     }
-    customElements.define("com-sample-NestedDonut", NestedDonut);
+    customElements.define("com-sample-nesteddonut", NestedDonut);
 })();
