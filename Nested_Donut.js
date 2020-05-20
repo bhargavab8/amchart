@@ -3,7 +3,7 @@
 	  template.innerHTML = `
         <div id="chart_div" style="width:900px;height:800px"></div>`;
 
-    class amchart1 extends HTMLElement {
+    class NestedDonut extends HTMLElement {
 		    constructor() {
 			      super(); 
 			      let shadowRoot = this.attachShadow({mode: "open"});
@@ -116,5 +116,5 @@
 
             }
     }
-    customElements.define("com-sample-amchart1", amchart1);
+    customElements.define("com-sample-NestedDonut", NestedDonut);
 })();
