@@ -112,5 +112,5 @@
             document.head.appendChild(script);
         }
     }
-    customElements.define("com-sap-sample-TableJSON", TableJSON);
+    customElements.define("com-sap-sample-tablejson", TableJSON);
 })();
