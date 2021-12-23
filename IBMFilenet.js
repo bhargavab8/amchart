@@ -1,11 +1,6 @@
 (function() { 
     let template = document.createElement("template");
     template.innerHTML = `
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Read data from External JSON file using JavaScript</title>
-
     <style>
        div { font:17px 'Calibri'; }
 
@@ -19,21 +14,20 @@
             font-weight:bold;
         }
     </style>
-</head>
 <body>
-    <h3>
-    	Data extracted from External JSON file and converted to an HTML table
-    </h3>
-    <div id='showTable'></div>
-</body>
+    <div id="showTable"></div>
+</body>;
+    
+    <script>
 
-<script>
+
     // Create XMLHttpRequest object.
+    var val = "https://raw.githubusercontent.com/bhargavab8/amchart/master/Data.json";
     var oXHR = new XMLHttpRequest();
 
     // Initiate request.
     oXHR.onreadystatechange = reportStatus;
-    oXHR.open("GET", "https://raw.githubusercontent.com/bhargavab8/amchart/master/Data.json", true);  // get json file.
+    oXHR.open("GET",val , true);  // get json file.
     oXHR.send();
 
     function reportStatus() {
@@ -86,10 +80,30 @@
         var divContainer = document.getElementById("showTable");
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
+        
     };
-</script>
-</html>
-    `;
-    
-    customElements.define("com-sap-sample-tablejson");
+         
+</script> `;
+    class TableJSON extends HTMLElement {
+        constructor() {
+            super(); 
+            let shadowRoot = this.attachShadow({mode: "open"});
+            shadowRoot.appendChild(template.content.cloneNode(true));
+            this.addEventListener("click", event => {
+                var event = new Event("onClick");
+                this.dispatchEvent(event);
+            });
+            this._props = {};
+        }
+        onCustomWidgetBeforeUpdate(changedProperties) {
+            this._props = { ...this._props, ...changedProperties };
+        }
+        onCustomWidgetAfterUpdate(changedProperties) {
+            this._props = { ...this._props, ...changedProperties };
+            var myprops = this._props       
+            var val = myprops.value;  
+
+        }
+    }
+    customElements.define("com-sap-sample-tablejson", TableJSON);
 })();
