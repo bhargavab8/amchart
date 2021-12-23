@@ -91,5 +91,5 @@
 </html>
     `;
     
-    customElements.define("com-sap-sample-tablejson", TableJSON);
+    customElements.define("com-sap-sample-tablejson");
 })();
