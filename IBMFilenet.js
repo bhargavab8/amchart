@@ -1,7 +1,11 @@
 (function() { 
     let template = document.createElement("template");
     template.innerHTML = `
-    <div id="showTable" class="Chart1" 
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Read data from External JSON file using JavaScript</title>
+
     <style>
        div { font:17px 'Calibri'; }
 
@@ -15,36 +19,21 @@
             font-weight:bold;
         }
     </style>
- ></div>
-    `;
-    class TableJSON extends HTMLElement {
-        constructor() {
-            super(); 
-            let shadowRoot = this.attachShadow({mode: "open"});
-            shadowRoot.appendChild(template.content.cloneNode(true));
-            this.addEventListener("click", event => {
-                var event = new Event("onClick");
-                this.dispatchEvent(event);
-            });
-            this._props = {};
-        }
-        onCustomWidgetBeforeUpdate(changedProperties) {
-            this._props = { ...this._props, ...changedProperties };
-        }
-        onCustomWidgetAfterUpdate(changedProperties) {
-            this._props = { ...this._props, ...changedProperties };
-            var myprops = this._props       
-            var val = myprops.value;  
-			const script = document.createElement('script');
-			script.type = 'text/javascript';
-			script.async = true;
-            script.onload = function () {
-                    // Create XMLHttpRequest object.
+</head>
+<body>
+    <h3>
+    	Data extracted from External JSON file and converted to an HTML table
+    </h3>
+    <div id='showTable'></div>
+</body>
+
+<script>
+    // Create XMLHttpRequest object.
     var oXHR = new XMLHttpRequest();
 
     // Initiate request.
     oXHR.onreadystatechange = reportStatus;
-    oXHR.open("GET", val, true);  // get json file.
+    oXHR.open("GET", "https://raw.githubusercontent.com/bhargavab8/amchart/master/Data.json", true);  // get json file.
     oXHR.send();
 
     function reportStatus() {
@@ -98,10 +87,9 @@
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
     };
-
-            }
-            document.head.appendChild(script);
-        }
-    }
+</script>
+</html>
+    `;
+    
     customElements.define("com-sap-sample-tablejson", TableJSON);
 })();
