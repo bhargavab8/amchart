@@ -1,11 +1,6 @@
 (function() { 
     let template = document.createElement("template");
     template.innerHTML = `
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Read data from External JSON file using JavaScript</title>
-
     <style>
        div { font:17px 'Calibri'; }
 
@@ -19,14 +14,9 @@
             font-weight:bold;
         }
     </style>
-</head>
 <body>
-    <h3>
-    	Data extracted from External JSON file and converted to an HTML table
-    </h3>
     <div id='showTable'></div>
 </body>
-</html>
     `;
     class TableJSON extends HTMLElement {
         constructor() {
