@@ -25,6 +25,7 @@
         </h3>
         <div id='showTable'></div>
     </body>
+    </html>
     `;
     class TableJSON extends HTMLElement {
         constructor() {
