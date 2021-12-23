@@ -16,18 +16,33 @@
     </style>
 <body>
     <div id="showTable"></div>
-</body>;
-    
-    <script>
-
+</body>
+    `;
+    class TableJSON extends HTMLElement {
+        constructor() {
+            super(); 
+            let shadowRoot = this.attachShadow({mode: "open"});
+            shadowRoot.appendChild(template.content.cloneNode(true));
+            this.addEventListener("click", event => {
+                var event = new Event("onClick");
+                this.dispatchEvent(event);
+            });
+            this._props = {};
+        }
+        onCustomWidgetBeforeUpdate(changedProperties) {
+            this._props = { ...this._props, ...changedProperties };
+        }
+        onCustomWidgetAfterUpdate(changedProperties) {
+            this._props = { ...this._props, ...changedProperties };
+            var myprops = this._props       
+            var val = myprops.value;  
 
     // Create XMLHttpRequest object.
-    var val = "https://raw.githubusercontent.com/bhargavab8/amchart/master/Data.json";
     var oXHR = new XMLHttpRequest();
 
     // Initiate request.
     oXHR.onreadystatechange = reportStatus;
-    oXHR.open("GET",val , true);  // get json file.
+    oXHR.open("GET", val, true);  // get json file.
     oXHR.send();
 
     function reportStatus() {
@@ -80,28 +95,8 @@
         var divContainer = document.getElementById("showTable");
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
-        
     };
-         
-</script> `;
-    class TableJSON extends HTMLElement {
-        constructor() {
-            super(); 
-            let shadowRoot = this.attachShadow({mode: "open"});
-            shadowRoot.appendChild(template.content.cloneNode(true));
-            this.addEventListener("click", event => {
-                var event = new Event("onClick");
-                this.dispatchEvent(event);
-            });
-            this._props = {};
-        }
-        onCustomWidgetBeforeUpdate(changedProperties) {
-            this._props = { ...this._props, ...changedProperties };
-        }
-        onCustomWidgetAfterUpdate(changedProperties) {
-            this._props = { ...this._props, ...changedProperties };
-            var myprops = this._props       
-            var val = myprops.value;  
+
 
         }
     }
