@@ -1,6 +1,7 @@
 (function() { 
     let template = document.createElement("template");
     template.innerHTML = `
+    <div id="showTable" class="Chart1" 
     <style>
        div { font:17px 'Calibri'; }
 
@@ -14,9 +15,7 @@
             font-weight:bold;
         }
     </style>
-<body>
-    <div id='showTable'></div>
-</body>
+ ></div>
     `;
     class TableJSON extends HTMLElement {
         constructor() {
